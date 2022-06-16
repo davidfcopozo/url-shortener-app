@@ -5,25 +5,9 @@ import detailedRecords from "../assets/icon-detailed-records.svg";
 import fullyCustomizable from "../assets/icon-fully-customizable.svg";
 import Input from "../components/Input";
 import { useFetch } from "../hooks/useFetch";
+import ShortenedLinks from "./ShortenedLinks";
 
 const Section = () => {
-  const [value, setValue] = useState();
-  const [data, loading, error] = useFetch(
-    `https://api.shrtco.de/v2/shorten?url=${value}`
-  );
-
-  useEffect(() => {
-    console.log(value);
-    console.log(data);
-    console.log(error);
-    async function renderLink() {
-      let links = await data;
-      console.log(links);
-    }
-    renderLink();
-  }, [value]);
-
-  //console.log(document.getElementById("link").value);
   return (
     <>
       <section className="fist-section">
@@ -41,9 +25,11 @@ const Section = () => {
         </div>
       </section>
 
-      <div class="input-container">
-        <Input setValue={setValue} />
+      <div className="input-container">
+        <Input />
       </div>
+
+      <ShortenedLinks />
 
       <section className="second-section">
         <div className="text-section">

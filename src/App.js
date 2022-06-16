@@ -1,17 +1,20 @@
-import './App.scss';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import Section from './components/Section';
+import "./App.scss";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Section from "./components/Section";
+import { ShortenedlinksProvider } from "./contexts/ShortenedContext";
 
 function App() {
   return (
-    <div className="App">
-      <div class="container">
-        <Header/>
-        <Section />
-        <Footer/>
+    <ShortenedlinksProvider>
+      <div className="App">
+        <div class="container">
+          <Header />
+          <Section />
+          <Footer />
+        </div>
       </div>
-    </div>
+    </ShortenedlinksProvider>
   );
 }
 
