@@ -13,16 +13,22 @@ export const ShortenedlinksProvider = ({ children }) => {
     []
   );
 
-  function addLinks(shortenedLink) {
-    setShortenedLinks(shortenedLink);
+  function addLinks({ input, shortLink }) {
+    setShortenedLinks((prevShortenedLinks) => {
+      if (prevShortenedLinks) {
+        return [...prevShortenedLinks, [input, shortLink]];
+      }
+      return prevShortenedLinks;
+    });
+
+    return [input, shortLink];
   }
 
   return (
     <ShortenedContext.Provider
       value={{
-        addLinks,
         shortenedLinks,
-        setShortenedLinks,
+        addLinks,
       }}
     >
       {children}

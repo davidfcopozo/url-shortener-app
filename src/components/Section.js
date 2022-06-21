@@ -8,6 +8,22 @@ import { useFetch } from "../hooks/useFetch";
 import ShortenedLinks from "./ShortenedLinks";
 
 const Section = () => {
+  /*   //let inputValue = document.getElementById("link")?.value;
+  const [input, setInput] = useState(document.getElementById("link")?.value);
+  const [shortenedLink, setShortenedLink] = useState();
+
+  let url = `https://api.shrtco.de/v2/shorten?url=${input}`;
+  const [data, error, loading] = useFetch(url);
+
+  async function getData(e) {
+    e.preventDefault();
+    setShortenedLink(await data.result.short_link);
+    setInput(document.getElementById("link")?.value);
+    console.log(data);
+  } */
+
+  const [inputValue, setInputValue] = useState("");
+
   return (
     <>
       <section className="fist-section">
@@ -25,11 +41,8 @@ const Section = () => {
         </div>
       </section>
 
-      <div className="input-container">
-        <Input />
-      </div>
-
-      <ShortenedLinks />
+      <Input />
+      {/*  <ShortenedLinks inputValue={inputValue} /> */}
 
       <section className="second-section">
         <div className="text-section">

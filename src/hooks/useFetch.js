@@ -25,7 +25,7 @@ export const useFetch = (url) => {
           throw err;
         }
         const json = await res.json();
-        console.table(res.status);
+        //console.table(res);
 
         if (!signal.aborted) {
           setData(json);
