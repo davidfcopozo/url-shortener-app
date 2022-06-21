@@ -2,82 +2,59 @@ import React, { useEffect, useState } from "react";
 import { useFetch } from "../hooks/useFetch";
 
 const ShortenedLinks = ({ inputValue }) => {
-  console.log(inputValue);
-
-  let url = `https://api.shrtco.de/v2/shorten?url=${inputValue}`;
+  const BASE_URL = "https://api.shrtco.de/v2/shorten?url=";
 
   const [data, setData] = useState("");
+  const [link, setLink] = useState("");
+  const [shortenLinks, setShortenLinks] = useState();
 
   useEffect(() => {
+    if (!inputValue) {
+      return;
+    }
+    const url = `${BASE_URL}${inputValue}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setData(data));
-    console.log(data);
-  }, [url]);
-
-  /*   const [link, setLink] = useState();
-  /*   const [link, setLink] = useState();
-  const [shortenedLink, setShortenedLink] = useState();
-  const [data, error, loading] = useFetch(); */
-  /* const [link, setLink] = useState();
-  const [shortenedLink, setShortenedLink] = useState([]); */
-  // useFetch(url);
-
-  /*  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  }, [inputValue]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-
-      try {
-        const res = await fetch(url);
-
-        if (!res.ok) {
-          let err = new Error("Error in Fetch request");
-          err.status = res.status || "000";
-          err.statusText = res.statusText || "An error has occurred";
-
-          throw err;
-        }
-        const json = await res.json();
-        setLink(json);
-        setData(json);
-        setError(null);
-      } catch (error) {
-        setData(null);
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-      return [data];
-    };
-    fetchData();
-  }, [url]);
+    if (!data || !data.ok) {
+      return;
+    }
+    setLink(data?.result.full_short_link);
+  }, [data]);
 
   useEffect(() => {
-    let inputLink = {
-      input: inputValue,
-      shortenedLink: data?.result.full_short_link,
+    if (!link) {
+      return;
+    }
+    const links = {
+      value: inputValue,
+      link: link,
     };
-    setShortenedLink((prevShortenedLink) =>
-      prevShortenedLink ? [...prevShortenedLink, inputLink] : inputLink
+
+    setShortenLinks((prevShortenedLinks) =>
+      !prevShortenedLinks ? [links] : [...prevShortenedLinks, links]
     );
-  }, [inputValue]); */
-
-  //if (loading) return <h1>Loading</h1>;
+    console.log(shortenLinks);
+  }, [link]);
 
   return (
     <>
       <div>
-        <div>
-          <p>{inputValue}</p>
-          <div>
-            <a href="" target="_blank"></a>
-            <button></button>
-          </div>
-        </div>
+        {shortenLinks &&
+          shortenLinks.map((el, i) => (
+            <div key={i}>
+              <p>{el["value"]}</p>
+              <div>
+                <a href="" target="_blank">
+                  {el["link"]}
+                </a>
+                <button></button>
+              </div>
+            </div>
+          ))}
       </div>
     </>
   );

@@ -14,7 +14,7 @@ const Input = ({ setInputValue }) => {
 
   return (
     <>
-      <div class="input-container">
+      <div className="input-container">
         <input
           type="url"
           name="link"
