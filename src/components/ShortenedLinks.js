@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useFetch } from "../hooks/useFetch";
+import { v4 as uuidv4 } from "uuid";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const ShortenedLinks = ({ inputValue }) => {
   const BASE_URL = "https://api.shrtco.de/v2/shorten?url=";
@@ -7,6 +8,27 @@ const ShortenedLinks = ({ inputValue }) => {
   const [data, setData] = useState("");
   const [link, setLink] = useState("");
   const [shortenLinks, setShortenLinks] = useState();
+  const [clipboard, setClipboard] = useState(false);
+  const [copy, setCopy] = useState(!clipboard ? "Copy" : "Copied");
+
+  const handleCopy = (id) => {
+    setClipboard((prevClipboard) => !prevClipboard);
+    return shortenLinks.map((link) =>
+      link.id === id ? { ...link, clipboard: clipboard } : link
+    );
+
+    //setClipboard((clipboard) => !clipboard);
+    /* setCopy(!clipboard ? "Copied" : "Copy"); */
+  };
+
+  useEffect(() => {
+    if (clipboard) {
+      setTimeout(() => {
+        handleCopy();
+      }, 3000);
+    }
+    clearTimeout();
+  }, [clipboard, copy]);
 
   useEffect(() => {
     if (!inputValue) {
@@ -30,31 +52,43 @@ const ShortenedLinks = ({ inputValue }) => {
       return;
     }
     const links = {
+      id: uuidv4(),
       value: inputValue,
       link: link,
+      clipboard: false,
     };
 
     setShortenLinks((prevShortenedLinks) =>
       !prevShortenedLinks ? [links] : [...prevShortenedLinks, links]
     );
-    console.log(shortenLinks);
   }, [link]);
 
   return (
     <>
-      <div>
+      <div className="shortenedLinks">
         {shortenLinks &&
-          shortenLinks.map((el, i) => (
-            <div key={i}>
-              <p>{el["value"]}</p>
-              <div>
-                <a href="" target="_blank">
-                  {el["link"]}
-                </a>
-                <button></button>
+          shortenLinks
+            .sort((a, b) => (a.id > b.id ? -1 : 1))
+            .map((el) => (
+              <div key={el.id} className="shortenedLink">
+                <p>{el["value"]}</p>
+                <span></span>
+                <div>
+                  <a href={el.link} target="_blank">
+                    {el["link"]}
+                  </a>
+                  <CopyToClipboard text={el["link"]}>
+                    <button
+                      id="btn"
+                      className={clipboard ? "clipboard" : ""}
+                      onClick={() => handleCopy(el.id)}
+                    >
+                      {clipboard ? "Copied" : "Copy"}
+                    </button>
+                  </CopyToClipboard>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
       </div>
     </>
   );

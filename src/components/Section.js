@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import workingIllustration from "../assets/illustration-working.svg";
 import brandRecognition from "../assets/icon-brand-recognition.svg";
 import detailedRecords from "../assets/icon-detailed-records.svg";
 import fullyCustomizable from "../assets/icon-fully-customizable.svg";
 import Input from "../components/Input";
-import { useFetch } from "../hooks/useFetch";
 import ShortenedLinks from "./ShortenedLinks";
 
 const Section = () => {
   const [inputValue, setInputValue] = useState("");
 
   return (
-    <>
+    <div className="sections">
       <section className="fist-section">
         <div className="text-section">
           <h2>More than just shorter links</h2>
@@ -26,11 +25,10 @@ const Section = () => {
           <img src="" alt="" />
         </div>
       </section>
-
       <Input setInputValue={setInputValue} />
-      <ShortenedLinks inputValue={inputValue} />
 
       <section className="second-section">
+        <ShortenedLinks inputValue={inputValue} />
         <div className="text-section">
           <h2>Advanced Statistics</h2>
           <p>
@@ -39,8 +37,11 @@ const Section = () => {
           </p>
         </div>
         <div className="img-section">
-          <figure>
-            <img src={brandRecognition} alt="" />
+          <div className="line"></div>
+          <figure className="figure1">
+            <div>
+              <img src={brandRecognition} alt="" />
+            </div>
             <figcaption>
               <h3>Brand Recognition</h3>
               <p>
@@ -51,8 +52,10 @@ const Section = () => {
             </figcaption>
           </figure>
 
-          <figure>
-            <img src={detailedRecords} alt="" />
+          <figure className="figure2">
+            <div>
+              <img src={detailedRecords} alt="" />
+            </div>
             <figcaption>
               <h3>Detailed Records</h3>
               <p>
@@ -63,8 +66,10 @@ const Section = () => {
             </figcaption>
           </figure>
 
-          <figure>
-            <img src={fullyCustomizable} alt="" />
+          <figure className="figure3">
+            <div>
+              <img src={fullyCustomizable} alt="" />
+            </div>
             <figcaption>
               <h3>Fully Customizable</h3>
               <p>
@@ -73,13 +78,13 @@ const Section = () => {
               </p>
             </figcaption>
           </figure>
-          <div className="boots">
-            <h3>Boots your links today</h3>
-            <a href="#">Get Started</a>
-          </div>
+        </div>
+        <div className="boots">
+          <h3>Boots your links today</h3>
+          <a href="#">Get Started</a>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

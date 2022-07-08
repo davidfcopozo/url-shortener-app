@@ -1,22 +1,28 @@
-import React from 'react'
+import React from "react";
+import Menu from "react-burger-menu/lib/menus/stack";
 
 export const NavBar = () => {
-  
   return (
-    <nav id='nav'>
+    <nav id="nav">
       <ul className="main-nav">
-        <li>Features</li>
-        <li>Pricing</li>
-        <li>Resources</li>
-      </ul>
-      <div className="sub-nav">
-        <ul>
-        <li>Sign In</li>
         <li>
-          <a href="#" id="sign-up-btn" >Sign Up</a>
+          <a href="#">Features</a>
+        </li>
+        <li>
+          <a href="#">Pricing</a>
+        </li>
+        <li>
+          <a href="#">Resources</a>
+        </li>
+        <li>
+          <a href="#">Login</a>
+        </li>
+        <li>
+          <a href="#" id="sign-up-btn">
+            Sign Up
+          </a>
         </li>
       </ul>
-      </div>
     </nav>
-  )
-}
+  );
+};

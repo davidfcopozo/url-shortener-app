@@ -1,13 +1,19 @@
-import React from 'react'
-import { NavBar } from './NavBar'
+import React from "react";
+import { NavBar } from "./NavBar";
+import { Hamburger } from "./Hamburger";
 
 const Header = () => {
   return (
     <header>
-      <a href="#" className="logo">Shortlify</a>
-      <NavBar/>
+      <div>
+        <a href="#" className="logo">
+          Shortlify
+        </a>
+      </div>
+      <Hamburger />
+      <NavBar />
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
