@@ -22,7 +22,7 @@ const Section = () => {
         </div>
         <div className="img-section">
           <img src={workingIllustration} alt="Working person illustration" />
-          <img src="" alt="" />
+          {/* <img src="" alt="" /> */}
         </div>
       </section>
       <Input setInputValue={setInputValue} />

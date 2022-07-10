@@ -14,7 +14,8 @@ export const NavBar = () => {
         <li>
           <a href="#">Resources</a>
         </li>
-        <li>
+        <span></span>
+        <li className="login-btn">
           <a href="#">Login</a>
         </li>
         <li>

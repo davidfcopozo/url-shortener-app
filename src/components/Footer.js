@@ -34,28 +34,30 @@ const Footer = () => {
           <li>Careers</li>
           <li>Contact</li>
         </ul>
-        <ul className="social-footer">
-          <li>
-            <a href="facebook.com">
-              <img src={facebookIcon} alt="Facebook icon" />
-            </a>
-          </li>
-          <li>
-            <a href="twitter.com">
-              <img src={twitterIcon} alt="Twitter icon" />
-            </a>
-          </li>
-          <li>
-            <a href="pinterest.com">
-              <img src={pinterestIcon} alt="Pinterest icon" />
-            </a>
-          </li>
-          <li>
-            <a href="instagram.com">
-              <img src={instagramIcon} alt="Instagram icon" />
-            </a>
-          </li>
-        </ul>
+        <div className="social-footer">
+          <ul>
+            <li>
+              <a href="facebook.com">
+                <img src={facebookIcon} alt="Facebook icon" />
+              </a>
+            </li>
+            <li>
+              <a href="twitter.com">
+                <img src={twitterIcon} alt="Twitter icon" />
+              </a>
+            </li>
+            <li>
+              <a href="pinterest.com">
+                <img src={pinterestIcon} alt="Pinterest icon" />
+              </a>
+            </li>
+            <li>
+              <a href="instagram.com">
+                <img src={instagramIcon} alt="Instagram icon" />
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </footer>
   );

@@ -6,9 +6,11 @@ import Section from "./components/Section";
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Section />
-      <Footer />
+      <div className="container">
+        <Header />
+        <Section />
+        <Footer />
+      </div>
     </div>
   );
 }

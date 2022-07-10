@@ -6,7 +6,7 @@ $Gray: hsl(0, 0%, 75%);
 $GrayishViolet: hsl(257, 7%, 63%);
 $VeryDarkBlue: hsl(255, 11%, 22%);
 $VeryDarkViolet: hsl(260, 8%, 14%);
-$h2FontSizes: clamp(1rem, 5vw + 1rem, 3.3rem);
+$h2FontSizes: clamp(1rem, 4vw + 1rem, 3.3rem);
 
 /* For hamburger menu */
 /* https: //www.npmjs.com/package/react-burger-menu */
@@ -86,31 +86,31 @@ html {
 }
 
 
+
 body {
-  
+  .container {
+    overflow-x: hidden;
+  }
   img {
     max-width: 100%;
   }
   header {
     display: flex;
+    width: 90%;
+    margin: 0 auto;
     gap: 1rem;
     justify-content: space-between;
     align-items: center;
-    /*     position: fixed;
-    top: 0;
-    margin-left: 9%;
-    z-index: 100;
-    background-color: #888888; */
-      a {
-        @include textDecoration;
-        color: white;
-        font-weight: 700;
+    ul a {
+      @include textDecoration;
+      color: white;
+      font-weight: 700;
       }
       button {
         background-color: red;
       }
       ul {
-        display: flex;
+        display: none;
         position: fixed;
         z-index: 1000;
         gap: 1rem;
@@ -125,13 +125,24 @@ body {
         border-radius: 25px;
         li{
           font-size: 1.3rem;
-          margin-top: 2rem;
+          margin-top: 1.5rem;
+        }
+        span {
+          border-bottom: solid 2px $GrayishViolet;
+          width: 100%;
+          opacity: .2;
+          margin: 2rem auto;
+        }
+        .login-btn {
+          margin-top: 0;
         }
         #sign-up-btn {
           color: white;
           background-color: $Cyan;
-          padding: 0.3rem 1rem;
-          border-radius: 25px
+          padding: 1rem;
+          border-radius: 35px;
+          display: inline-block;
+          width: 100%;
         }
       }
     
@@ -140,29 +151,51 @@ body {
       color: $VeryDarkViolet;
       font-size: 20px;
       font-weight: 700;
-      margin-top: 2rem;
+      margin: 1rem;
     }
   }
   
-  
   .fist-section {
-    display: grid;
-    grid-template-columns: 40% 60%;
+    display: flex;
+    flex-direction: column-reverse;
     gap: 2rem;
-    width: 80%;
+    width: 90%;
     margin : 0 auto;
+    .text-section {
+      text-align: center;
+      color: $GrayishViolet;
+      font-weight: 500;
+    }
     h2 {
         font-size: $h2FontSizes;
         font-weight: 700;
         color: $VeryDarkBlue;
         margin-bottom: .5rem;
-        line-height: 1.1
+        line-height: 1.1;
+      }
+      P {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+      }
+      a {
+        @include textDecoration;
+        background-color: $Cyan;
+        padding: 0.5rem 1.5rem;
+        border-radius: 25px;
+        font-weight: 500;
+        color: white;
+      }
+      .img-section {
+        width: 150%;
+        img {
+
+          overflow: hidden;
+        }
       }
   }
 
   .input-container {
     display: grid;
-    grid-template-columns: 1fr auto;
     gap: 1rem;
     background-image: url(./assets/bg-shorten-desktop.svg);
     background-position: center;
@@ -170,25 +203,33 @@ body {
     background-size: cover;
     text-align: center;
     justify-content: space-around;
-    padding: 2rem 3rem;
+    padding: 1rem 0;
     border-radius: 5px;
     background-color: hsl(260, 8%, 14%);
-    margin: 0 auto;
-    width: 80%;
+    margin-inline: auto;
+    width: 90%;
     transform: translateY(50%);
+
+    input {
+        font-size: .9rem;
+        font-weight: 500;
+        padding: 0.5rem 1.5rem;
+        outline: none;
+        width: 100%;
+      }
 
     #link {
       border-radius: 5px;
       border-color: transparent;
     }
-
-    #link::placeholder {
+    
+    #link::placeholder{
       color: $GrayishViolet;
       font-size: .9rem;
       font-weight: 500;
-      padding: 1rem;
     }
-
+    
+    
     #linkBtn {
       @include textDecoration;
       color: white;
@@ -207,8 +248,13 @@ body {
 
     .text-section,
     .img-section {
-      margin: 0 auto;
       max-width: 80%;
+      margin-inline: auto;
+      
+    }
+    .text-section {
+      margin-top: 25%;
+      text-align: center;
     }
     .shortenedLinks {
       position: relative;
@@ -258,8 +304,9 @@ body {
     .img-section {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      padding: 1rem;
-
+      padding: 3rem 0;
+      justify-content: center;
+      align-items: center;
 
       .figure2 {
         margin-top: 5rem;
@@ -270,14 +317,23 @@ body {
       }
 
       .line {
-        position: absolute;
-        justify-self: center;
-        align-self: center;
+      /*   position: absolute;
+        display: inline;
+        justify-items: center;
+        align-items: center;
+        transform: rotate(90deg);
         z-index: 0;
         height: 10px;
-        width: 60%;
+        width: 100%;
         border: 0;
-        background: $Cyan;
+        background: $Cyan; */
+        border-left: 6px solid $Cyan;
+        height: 60vh;
+        position: absolute;
+        left: 50%;
+        margin-left: -3px;
+        bottom: 50vh;
+        z-index: 0;
       }
 
       figure {
@@ -291,15 +347,13 @@ body {
         div {
           display: flex;
           background-color: $VeryDarkBlue;
-          padding: 1rem;
-          width: 50px;
-          height: 50px;
+          padding: 0.5rem;
+          width: 80px;
+          min-height: 80px;
           border-radius: 50%;
           align-items: center;
           justify-content: center;
-          margin-top: -2.5rem;
-          margin-left: 1rem;
-          margin: -2.5rem auto 0 auto;
+          margin: -2rem auto 0 auto;
         }
 
         figcaption {
@@ -344,23 +398,18 @@ body {
         }
   }
     footer {
-      display: flex;
       background-color: hsl(260, 8%, 14%);
-      padding: 2rem;
+      padding: 2rem 0;
       align-content: center;
       justify-content: center;
-  
+      text-align: center;
       h2 {
         color: #FFFFFF;
-        margin-right: 4rem;
-      }
-  
-      .footer-container {
-        display: flex;
       }
   
       ul {
         margin: 1rem;
+        text-align: center;
       }
   
       li {
@@ -369,10 +418,18 @@ body {
       }
   
       .social-footer {
-        display: flex;
-  
+        ul {
+          display: flex;
+          justify-content: center;
+        }
         li {
-          margin: 1rem;
+          margin: .5rem;
+        }
+      }
+      .footer-container {
+        text-align: center;
+        ul {
+          padding-inline: 0;
         }
       }
     }
