@@ -1,34 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const ShortenedLinks = ({ inputValue }) => {
   const BASE_URL = "https://api.shrtco.de/v2/shorten?url=";
 
   const [data, setData] = useState("");
   const [link, setLink] = useState("");
-  const [shortenLinks, setShortenLinks] = useState();
-  const [clipboard, setClipboard] = useState(false);
-  const [copy, setCopy] = useState(!clipboard ? "Copy" : "Copied");
+  const [shortenLinks, setShortenLinks] = useLocalStorage();
+  const [copy, setCopy] = useState("Copy");
 
   const handleCopy = (id) => {
-    setClipboard((prevClipboard) => !prevClipboard);
-    return shortenLinks.map((link) =>
-      link.id === id ? { ...link, clipboard: clipboard } : link
-    );
-
-    //setClipboard((clipboard) => !clipboard);
-    /* setCopy(!clipboard ? "Copied" : "Copy"); */
+    setCopy("Copied");
+    console.log(id);
+    return shortenLinks.map((link) => (link.id === id ? { ...link } : link));
   };
-
-  useEffect(() => {
-    if (clipboard) {
-      setTimeout(() => {
-        handleCopy();
-      }, 3000);
-    }
-    clearTimeout();
-  }, [clipboard, copy]);
 
   useEffect(() => {
     if (!inputValue) {
@@ -55,7 +42,6 @@ const ShortenedLinks = ({ inputValue }) => {
       id: uuidv4(),
       value: inputValue,
       link: link,
-      clipboard: false,
     };
 
     setShortenLinks((prevShortenedLinks) =>
@@ -68,7 +54,8 @@ const ShortenedLinks = ({ inputValue }) => {
       <div className="shortenedLinks">
         {shortenLinks &&
           shortenLinks
-            .sort((a, b) => (a.id > b.id ? -1 : 1))
+            .slice(0)
+            .reverse()
             .map((el) => (
               <div key={el.id} className="shortenedLink">
                 <p>{el["value"]}</p>
@@ -78,12 +65,8 @@ const ShortenedLinks = ({ inputValue }) => {
                     {el["link"]}
                   </a>
                   <CopyToClipboard text={el["link"]}>
-                    <button
-                      id="btn"
-                      className={clipboard ? "clipboard" : ""}
-                      onClick={() => handleCopy(el.id)}
-                    >
-                      {clipboard ? "Copied" : "Copy"}
+                    <button id="btn" onClick={() => handleCopy(el.id)}>
+                      {copy}
                     </button>
                   </CopyToClipboard>
                 </div>

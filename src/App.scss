@@ -103,44 +103,63 @@ body {
     margin: 0 auto;
     gap: 1rem;
     justify-content: space-between;
+    min-height: 5vh;
     align-items: center;
     ul a {
       @include textDecoration;
       color: white;
       font-weight: 700;
-      }
-      button {
-        background-color: red;
-        position: absolute;
+    }
+    button {
+      position: absolute;
+      z-index: 2000;
+      cursor: pointer;
         right: 2.5rem;
-        top: 1rem;
-        border: 0;
-        background-image: url(./assets/menu-icon.svg);
+        /* top: -1vh; */
+        background: transparent;
+        background-image: url(./assets/hamburger-menu-custom.svg);
         background-repeat: no-repeat;
+        width: 2rem;
+        aspect-ratio: 1;
+        border: 0;
+        #id1 {
+        color: $GrayishViolet;
+        }
+      }
+      .active {
+        transition: 500ms ease-in-out;
+        transform: translateX(0%);
       }
       ul {
-        display: none;
+        display: flex;
+        transition: 500ms ease-in-out;
         position: fixed;
+        transform: translateX(150%);
         z-index: 1000;
-        gap: 1rem;
+        gap: .5rem;
         @include textDecoration;
-        margin: 0;
-        padding: min(10rem, 5vh) 2rem;
+        margin-inline: 0;
+        margin-top: 1rem;
+        padding: min(3rem, 5vh) 2rem;
         inset: 5% 10% 30% 10%;
         flex-direction: column;
         background-color: $DarkViolet;
         text-align: center;
         justify-content: center;
-        border-radius: 25px;
+        border-radius: 10px;
+        height: 40vh;
         li{
-          font-size: 1.3rem;
-          margin-top: 1.5rem;
+          font-size: 1rem;
+          margin-top: 1rem;
+        }
+        li:nth-child(1) {
+          margin-top: 0;
         }
         span {
           border-bottom: solid 2px $GrayishViolet;
           width: 100%;
           opacity: .2;
-          margin: 2rem auto;
+          margin: 1rem auto;
         }
         .login-btn {
           margin-top: 0;
@@ -169,7 +188,7 @@ body {
     flex-direction: column-reverse;
     gap: 2rem;
     width: 80%;
-    margin : 0 auto;
+    margin : 1rem auto 0 auto;
     .text-section {
       text-align: center;
       color: $GrayishViolet;
@@ -276,11 +295,13 @@ body {
     }
     .shortenedLinks {
       position: relative;
-      width: 50%;
+      width: 100%;
       margin: 0 auto;
       margin-top: 5%;
       align-content: center;
       border-radius: 8px;
+      margin-bottom: 3rem;
+      top: 5vh;
   
       .shortenedLink {
         display: flex;
@@ -291,7 +312,9 @@ body {
         border-radius: 5px;
         padding: 1rem;
         margin: 1rem;
-  
+         p{
+          padding-bottom: 1rem;
+         }
         span {
           width: 110%;
           border-top: 2px solid $Gray;

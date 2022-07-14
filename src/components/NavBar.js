@@ -1,5 +1,4 @@
 import React from "react";
-import Menu from "react-burger-menu/lib/menus/stack";
 
 export const NavBar = () => {
   return (
