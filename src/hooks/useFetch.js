@@ -16,6 +16,7 @@ export const useFetch = (url) => {
 
       try {
         const res = await fetch(url);
+        console.log(res.status);
 
         if (!res.ok) {
           let err = new Error("Error in Fetch request");

@@ -268,6 +268,7 @@ body {
       @include fonts(1rem, 700);
       padding: 0.5rem 1.5rem;
       border-color: transparent;
+      cursor: pointer;
     }
   }
 
@@ -480,6 +481,11 @@ body {
     .clipboard {
       opacity: 0.4;
     }
+}
+
+.disabled {
+  background-color: $Gray !important;
+  cursor:not-allowed;
 }
 
 /* **************************************************************************************************** */
