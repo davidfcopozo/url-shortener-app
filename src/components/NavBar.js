@@ -2,7 +2,7 @@ import React from "react";
 
 export const NavBar = () => {
   return (
-    <nav id="nav">
+    <nav className="nav">
       <ul className="main-nav">
         <li>
           <a href="#">Features</a>

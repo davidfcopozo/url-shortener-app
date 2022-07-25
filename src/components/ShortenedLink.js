@@ -17,10 +17,12 @@ const ShortenedLink = ({ inputValue, copy, shortenLinks, setShortenLinks }) => {
 
   const handleCopy = (el) => {
     let $btn = document.getElementById(el.id);
-    $btn.innerHTML = "Copied";
+    $btn.innerHTML = "Copied!";
+    $btn.classList.add("btnClicked");
 
     setTimeout(() => {
       $btn.innerHTML = "Copy";
+      $btn.classList.remove("btnClicked");
     }, 3000);
   };
 

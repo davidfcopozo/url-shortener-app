@@ -25,11 +25,18 @@ const Input = ({ setInputValue }) => {
   };
 
   const handleClick = (e) => {
+    let $input = document.getElementById("link"),
+      $span = document.createElement("span");
+    if (!value) {
+      $span.textContent = "Please add a link";
+
+      $input.insertAdjacentElement("afterend", $span);
+    }
     if (setInputValue) {
+      $span.remove();
       e.preventDefault();
       setInputValue(value);
       setValue("");
-      console.log("This works!");
     }
   };
 
@@ -44,6 +51,7 @@ const Input = ({ setInputValue }) => {
             placeholder="Shorten a link here..."
             value={value}
             onChange={(e) => onChangeValidator(e)}
+            required
           />
           <input
             onClick={handleClick}
