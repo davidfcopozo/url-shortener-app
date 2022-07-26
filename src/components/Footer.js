@@ -6,7 +6,7 @@ import instagramIcon from "../assets/icon-instagram.svg";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="footer">
       <h2>Shortify</h2>
       <div class="footer-container">
         <ul>
@@ -37,23 +37,35 @@ const Footer = () => {
         <div className="social-footer">
           <ul>
             <li>
-              <a href="facebook.com">
-                <img src={facebookIcon} alt="Facebook icon" />
+              <a href="facebook.com" target="_blank">
+                <img
+                  className="sm-icon"
+                  src={facebookIcon}
+                  alt="Facebook icon"
+                />
               </a>
             </li>
             <li>
-              <a href="twitter.com">
-                <img src={twitterIcon} alt="Twitter icon" />
+              <a href="twitter.com" target="_blank">
+                <img className="sm-icon" src={twitterIcon} alt="Twitter icon" />
               </a>
             </li>
             <li>
-              <a href="pinterest.com">
-                <img src={pinterestIcon} alt="Pinterest icon" />
+              <a href="pinterest.com" target="_blank">
+                <img
+                  className="sm-icon"
+                  src={pinterestIcon}
+                  alt="Pinterest icon"
+                />
               </a>
             </li>
             <li>
-              <a href="instagram.com">
-                <img src={instagramIcon} alt="Instagram icon" />
+              <a href="instagram.com" target="_blank">
+                <img
+                  className="sm-icon"
+                  src={instagramIcon}
+                  alt="Instagram icon"
+                />
               </a>
             </li>
           </ul>
