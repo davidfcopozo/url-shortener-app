@@ -22,7 +22,6 @@ const Section = () => {
         </div>
         <div className="img-section">
           <img src={workingIllustration} alt="Working person illustration" />
-          {/* <img src="" alt="" /> */}
         </div>
       </section>
       <Input setInputValue={setInputValue} />
@@ -79,7 +78,7 @@ const Section = () => {
             </figcaption>
           </figure>
         </div>
-        <div className="boots">
+        <div className="boost">
           <h3>Boots your links today</h3>
           <a href="#">Get Started</a>
         </div>

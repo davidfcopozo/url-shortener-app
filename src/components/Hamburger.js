@@ -2,7 +2,8 @@ import React from "react";
 
 export const Hamburger = () => {
   const mobileMenu = (e) => {
-    document.querySelector(".main-nav").classList.toggle("active");
+    let nav = document.querySelector(".main-nav");
+    nav.classList.toggle("active");
   };
 
   return (

@@ -34,7 +34,8 @@ $smFontSizes: clamp(.8rem, 1rem, 1.5rem);
 }
 
 @mixin opacity {
-  opacity: 0.5;
+  opacity: 0.9;
+  filter: brightness(1.1);
 }
 
 
@@ -91,12 +92,9 @@ select {
   }
 }
 
-
 html {
   scroll-behavior: smooth;
 }
-
-
 
 body {
   .container {
@@ -154,7 +152,7 @@ body {
       gap: .5rem;
       @include textDecoration;
       margin-inline: 0;
-      margin-top: 1rem;
+      margin-top: 2rem;
       padding: min(3rem, 5vh) 2rem;
       inset: 5% 10% 30% 10%;
       flex-direction: column;
@@ -162,7 +160,7 @@ body {
       text-align: center;
       justify-content: center;
       border-radius: 10px;
-      height: 40vh;
+      height: fit-content;
 
       li {
         font-size: 1rem;
@@ -279,6 +277,13 @@ body {
     margin-inline: auto;
     width: 90%;
     transform: translateY(50%);
+    .addLinkError {
+      color: red;
+      font-weight: 500;
+      text-align: left;
+      padding-left: 2rem;
+      margin-top: -10px;
+    }
 
     input {
       font-size: .9rem;
@@ -352,7 +357,22 @@ body {
       border-radius: 8px;
       margin-bottom: 3rem;
       top: 5vh;
-      
+
+    .error {
+        display: flex;
+        text-align: center;
+        color: rgb(90%, 10%, 10%);
+        justify-self: center;
+        width: 80%;
+        flex-direction: column;
+        font-weight: 500;
+        background: #FFFFFF;
+        box-shadow: 1px 1px 5px #888888;
+        border-radius: 5px;
+        padding: 1rem;
+        margin: 1rem auto;
+      }
+
       .shortenedLink {
         display: flex;
         flex-direction: column;
@@ -363,6 +383,8 @@ body {
         padding: 1rem;
         margin: 1rem auto;
         
+      
+
         p {
           padding-bottom: 1rem;
           font-weight: 700;
@@ -391,7 +413,7 @@ body {
 
         button {
           @include textDecoration;
-          display: inline-block;
+          display: inline;
           text-align: center;
           color: white;
           background-color: $Cyan;
@@ -408,6 +430,8 @@ body {
           }
         }
       }
+    
+ 
     }
 
     .img-section {
@@ -416,11 +440,11 @@ body {
       padding: 3rem 0;
       justify-content: center;
       align-items: center;
-
+      
       .figure2 {
         margin-top: 5rem;
       }
-
+      
       .figure3 {
         margin-top: 5rem;
       }
@@ -467,18 +491,17 @@ body {
         }
       }
     }
-
-    .boots {
+    
+    .boost {
       background-color: hsl(260, 8%, 14%);
       background-image: url(./assets/bg-boost-mobile.svg);
       background-repeat: no-repeat;
       background-size: cover;
-      height: 30vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 1rem;
+      padding: 2rem;
       margin-top: 1rem;
 
       h3 {
@@ -496,6 +519,10 @@ body {
         @include fonts(1rem, 700);
         padding: 0.5rem 1.5rem;
         border-color: transparent;
+        &:hover {
+          opacity: 0.9;
+          filter: brightness(1.1);
+        }
       }
     }
   }
@@ -534,18 +561,16 @@ body {
 
     .social-footer {
       margin-top: 2rem;
-
+ 
       ul {
         display: flex;
         justify-content: center;
         li {
           margin: .5rem;
-          &:hover {
-            color: $Cyan;
-          }
         }
       }
-
+      
+      
     }
 
     .footer-container {
@@ -586,89 +611,104 @@ body {
   cursor: not-allowed;
 }
 
-/* **************************************************************************************************** */
-/* @media (min-width: 641px) {
 
-} */
-/* *************************************************************************************************** */
-
-@media (min-width: 750px) {
-/*   header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 80%;
-      margin: 0 auto;
-  
-      .logo {
-        @include textDecoration;
-        color: $VeryDarkViolet;
-        font-size: $logoFontSizes;
-        font-weight: 700;
-      }
-  
-      .mobile-nav-toggle {
-        display: none;
-      }
-  
-      li {
-        @include textDecoration;
-        font-size: 14px;
-        font-weight: 700;
-        &:nth-child(n):not(:nth-last-of-type(1)){
-          margin-inline: 1rem;
+.modal {
+  // This is modal bg
+    display: block;
+    background: rgba(0, 0, 0, .6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    
+    .modal-dialog {
+      transform: translate(0, 0);
+      top: 20%;
+    }
+    
+    // Modal Dialog
+    // ----------------------
+    
+    .modal-dialog {
+      background: #fefefe;
+      border: gray solid 1px;
+      border-radius: 25px;
+      margin-left: -200px;
+      position: fixed;
+      left: 50%;
+      top: 25%;
+      z-index: 11;
+      width: 360px;
+      transform: transition-transform("0.3s ease-out");
+      
+      .modal-body {
+        padding: 2rem;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1rem;
+    }
+    .modal-header,
+    .modal-footer {
+      color: rgb(90%, 10%, 10%);
+      padding: 2rem;
+      width: 90%;
+      margin-inline: auto;
+    }
+    
+    .modal-header {
+      border-bottom: $GrayishViolet solid 1px;
+      
+      .btn-close {
+        color: gray;
+        font-size: 30px;
+        text-decoration: none;
+        position: absolute;
+        right: 5%;
+        top: 0;
+    
+        &:hover {
+          color: darken($Cyan, 10%);
         }
       }
-  
-      .nav {
-        padding: $li-paddin;
-        width: 100%;
-  
-        a {
-          color: $GrayishViolet;
+    
+      h2 {
+        font-size: 20px;
+        text-align: center;
+      }
+    }
+    .modal-footer {
+      border-top: $GrayishViolet solid 1px;
+      text-align: center;
+      .btn {
           @include textDecoration;
-        }
-  
-        #sign-up-btn {
           color: white;
           background-color: $Cyan;
-          padding: 0.3rem 1rem;
-          border-radius: 25px
-        }
-  
-        span {
-          display: none;
-        }
-      }
-  
-      .main-nav {
-        position: unset;
-        height: unset;
-        justify-content: flex-start;
-        margin: 0;
-        padding: 0;
-        background-color: transparent;
-        @include flex-row;
-        transform: translateX(0%);
-        align-items: center;
-  
-        li {
-          align-content: center;
-          margin: 0;
-          padding: 0;
-  
-          &:nth-last-of-type(1) {
-            position: absolute;
-            right: 0;
-          }
-  
-          &:nth-last-of-type(2) {
-            position: absolute;
-            right: 15%;
+          border-radius: 25px;
+          @include fonts(1rem, 700);
+          padding: 0.5rem 1.5rem;
+          border-color: transparent;
+          
+
+          &:hover {
+            opacity: 0.9;
+            filter: brightness(1.1);
           }
         }
       }
-    } */
+  }
+}
+
+.modal-close {
+  display: none;
+}
+
+
+
+/* **************************************************************************************************** */
+
+@media (min-width: 750px) {
 
   .sections {
     .fist-section {
@@ -721,6 +761,7 @@ body {
 
       .input-container {
         width: 80%;
+        
       }
 
     .second-section {
@@ -734,11 +775,14 @@ body {
         }
   
         .shortenedLink:nth-child(n) {
-          max-height: 8vh;
-          flex-direction: row ;
+          flex-direction: row;
+          max-height: 5vh;
           justify-content: space-between;
           align-items: center;
           width: 80%;
+          padding-top: 2rem;
+          padding-bottom: 2rem;
+          padding-inline: auto;
   
           p {
             padding-bottom: 0;
@@ -758,7 +802,8 @@ body {
               margin-left: 1rem;
               padding: 0.2rem 1.5rem;
               font-size: .8rem;
-              width: 50%;
+              width: 100px;
+              
             }
           }
         }
@@ -870,38 +915,57 @@ body {
     .sections {
       .input-container {
         display: grid;
-        grid-template-columns: 70% 30%;
-        padding: 3rem 2rem;
+        grid-template-columns: 80% 20%;
+        padding: 3rem 3rem;
+        background-image: url(./assets/bg-shorten-desktop.svg);
+
+        #link {
+          width: 100%;
+          height: 60px;
+          &::placeholder {
+            font-size: 1rem;
+            padding-left: 0;
+          }
+        }
 
         #linkBtn {
           max-width: 200px;
         }
       }
       .second-section {
+
         .text-section {
           margin-top: 10%;
         }
+        .boost {
+          background-image: url(./assets/bg-boost-desktop.svg);
+          padding: 3rem;
+          a {
+              @include opacity;
+            }
+        }
       }
-    }
+   }
 
   .footer {
     display: flex;
     background-color: hsl(260, 8%, 14%);
     padding: 3rem;
     align-content: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding-inline: 4rem;
 
     h2 {
       color: #FFFFFF;
-      margin-right: 5rem;
+      /* margin-right: 5rem; */
     }
 
     .footer-container {
       display: flex;
+      margin-left: 10rem;
 
       ul:not(:nth-last-child(1)) {
-        padding-right: 1rem;
+        padding-right: 2rem;
         li {
           text-align: left;
           @include textDecoration;
@@ -927,8 +991,6 @@ body {
 /* *************************************************************************************************** */
 
 @media (min-width: 1125px) {
-
-    
 
     .fist-section {
         display: grid;
@@ -1051,7 +1113,7 @@ body {
             }
             button {
               @include textDecoration;
-              width: 100%;
+              width: 150px;
               color: white;
               background-color: $Cyan;
               border-radius: 8px;
@@ -1118,12 +1180,11 @@ body {
           }
         }
   
-       .boots {  
+       .boost {  
           background-color: hsl(260, 8%, 14%); 
-          background-image: url(./assets/bg-boost-desktop.svg);
           background-repeat: no-repeat;
           background-size: cover;
-          height: 30vh;
+          background-image: url(./assets/bg-boost-desktop.svg);
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -1145,35 +1206,4 @@ body {
           }
         }
     }
-
- /*  footer {
-      display: flex;
-      background-color: hsl(260, 8%, 14%);
-      padding: 2rem;
-      align-content: center;
-      justify-content: center;
-
-      h2{
-        color: #FFFFFF;
-        margin-right: 4rem;
-      }
-      
-      .footer-container {
-        display: flex;
-      }
-      ul {
-        margin: 1rem;
-      }
-      li {
-        @include textDecoration;
-        color: #FFFFFF;
-      }
-      .social-footer {
-        display: flex;
-        li {
-          margin: 1rem;
-        }
-      }
-    } */
-
   }

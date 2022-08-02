@@ -17,23 +17,32 @@ const Input = ({ setInputValue }) => {
       linkBtn.setAttribute("disabled", "disabled");
       setDisableBtn(true);
       linkBtn.classList.add("disabled");
+      $span.remove();
     } else if (reg.test(value) || e.target.value.length < 2) {
+      $span.remove();
       linkInput.style.outline = "none";
       setDisableBtn(false);
       linkBtn.classList.remove("disabled");
     }
   };
 
-  const handleClick = (e) => {
-    let $input = document.getElementById("link"),
-      $span = document.createElement("span");
-    if (!value) {
-      $span.textContent = "Please add a link";
+  let $span = document.createElement("span");
 
-      $input.insertAdjacentElement("afterend", $span);
+  const handleClick = (e) => {
+    let linkInput = document.getElementById("link");
+    if (value.length < 1) {
+      if ($span) {
+        $span.innerText = "Please add a link";
+        $span.classList.add("addLinkError");
+        linkInput.insertAdjacentElement("afterend", $span);
+
+        linkInput.style.outlineStyle = "solid";
+        linkInput.style.outlineColor = "red";
+        linkInput.style.outlineWidth = "2px";
+      }
     }
+
     if (setInputValue) {
-      $span.remove();
       e.preventDefault();
       setInputValue(value);
       setValue("");

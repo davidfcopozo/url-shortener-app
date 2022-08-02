@@ -37,7 +37,7 @@ const Footer = () => {
         <div className="social-footer">
           <ul>
             <li>
-              <a href="facebook.com" target="_blank">
+              <a href="https://facebook.com" target="_blank" rel="noreferrer">
                 <img
                   className="sm-icon"
                   src={facebookIcon}
@@ -46,12 +46,16 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="twitter.com" target="_blank">
+              <a
+                href="https://twitter.com/daidaicodes"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <img className="sm-icon" src={twitterIcon} alt="Twitter icon" />
               </a>
             </li>
             <li>
-              <a href="pinterest.com" target="_blank">
+              <a href="https://pinterest.com" target="_blank" rel="noreferrer">
                 <img
                   className="sm-icon"
                   src={pinterestIcon}
@@ -59,13 +63,13 @@ const Footer = () => {
                 />
               </a>
             </li>
-            <li>
-              <a href="instagram.com" target="_blank">
-                <img
-                  className="sm-icon"
-                  src={instagramIcon}
-                  alt="Instagram icon"
-                />
+            <li className="sm-icon">
+              <a
+                href="https://instagram.com/daidaicodes"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={instagramIcon} alt="Instagram icon" />
               </a>
             </li>
           </ul>

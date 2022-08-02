@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header>
       <div>
-        <a href="#" className="logo">
+        <a href="#" className="logo" rel="noreferrer">
           Shortlify
         </a>
       </div>

@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useFetch } from "../hooks/useFetch";
+import Error from "./Error";
 
-const ShortenedLink = ({ inputValue, copy, shortenLinks, setShortenLinks }) => {
+const ShortenedLink = ({ inputValue, shortenLinks, setShortenLinks }) => {
   const BASE_URL = "https://api.shrtco.de/v2/shorten?url=";
 
-  /* const [data, setData] = useState(""); */
   const [link, setLink] = useState("");
 
   const [data, error, loading] = useFetch(`${BASE_URL}${inputValue}`);
@@ -54,6 +54,7 @@ const ShortenedLink = ({ inputValue, copy, shortenLinks, setShortenLinks }) => {
       !prevShortenedLinks ? [links] : [...prevShortenedLinks, links]
     );
   }, [link]);
+
   return (
     <>
       {shortenLinks ? (
@@ -78,8 +79,29 @@ const ShortenedLink = ({ inputValue, copy, shortenLinks, setShortenLinks }) => {
           ))
       ) : loading ? (
         <div className="shortenedLink">Is loading</div>
-      ) : error.status >= 400 ? (
-        <div className="shortenedLink">`An error occured ${error.message}`</div>
+      ) : data?.status > 399 ? (
+        <>
+          <Error error={error?.message} />
+          {shortenLinks
+            .slice(0)
+            .reverse()
+            .map((el) => (
+              <div key={el.id} className="shortenedLink">
+                <p>{el["value"]}</p>
+                <span></span>
+                <div>
+                  <a href={el.link} target="_blank" rel="noreferrer">
+                    {el["link"]}
+                  </a>
+                  <CopyToClipboard text={el["link"]}>
+                    <button id={el.id} onClick={() => handleCopy(el)}>
+                      Copy
+                    </button>
+                  </CopyToClipboard>
+                </div>
+              </div>
+            ))}
+        </>
       ) : null}
     </>
   );
