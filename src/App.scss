@@ -594,7 +594,25 @@ body {
         }
       }
     }
+    .footprint {
+      position: absolute;
+      width: 100%;
+      padding: 1rem;
+      bottom: -255%;
+      margin-top: 1rem;
+      border-top: 1px solid $GrayishViolet;
+      color: $GrayishViolet;
+      background: $VeryDarkViolet;
+      p {
+        @include fonts(1rem, 500);
+        a{
+          @include textDecoration;
+          color: $Cyan;
+        }
+        }
+    }
   }
+
 
   .clipboard {
     opacity: 0.4;

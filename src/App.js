@@ -1,5 +1,6 @@
 import "./App.scss";
 import Footer from "./components/Footer";
+import Footprint from "./components/Footprint";
 import Header from "./components/Header";
 import Section from "./components/Section";
 
@@ -10,6 +11,7 @@ function App() {
         <Header />
         <Section />
         <Footer />
+        {/* <Footprint /> */}
       </div>
     </div>
   );
