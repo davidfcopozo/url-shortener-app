@@ -11,7 +11,7 @@ function App() {
         <Header />
         <Section />
         <Footer />
-        {/* <Footprint /> */}
+        <Footprint />
       </div>
     </div>
   );

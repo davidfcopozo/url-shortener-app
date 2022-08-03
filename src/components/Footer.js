@@ -3,7 +3,6 @@ import facebookIcon from "../assets/icon-facebook.svg";
 import twitterIcon from "../assets/icon-twitter.svg";
 import pinterestIcon from "../assets/icon-pinterest.svg";
 import instagramIcon from "../assets/icon-instagram.svg";
-import Footprint from "./Footprint";
 
 const Footer = () => {
   return (
@@ -76,7 +75,6 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <Footprint />
     </footer>
   );
 };

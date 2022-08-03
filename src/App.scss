@@ -594,22 +594,21 @@ body {
         }
       }
     }
-    .footprint {
-      position: absolute;
-      width: 100%;
-      padding: 1rem;
-      bottom: -255%;
-      border-top: 1px solid $GrayishViolet;
-      color: $GrayishViolet;
-      background: $VeryDarkViolet;
-      p {
-        @include fonts(1rem, 500);
-        a{
-          @include textDecoration;
-          color: $Cyan;
-        }
-        }
-    }
+  }
+  .footprint {
+    width: 100%;
+    padding: 2rem;
+    border-top: 1px solid $GrayishViolet;
+    color: $GrayishViolet;
+    background: $VeryDarkViolet;
+    p {
+      @include fonts(1rem, 500);
+      text-align: center;
+      a{
+        @include textDecoration;
+        color: $Cyan;
+      }
+      }
   }
 
 
