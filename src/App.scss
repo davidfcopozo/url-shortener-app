@@ -453,7 +453,7 @@ body {
         position: absolute;
         -ms-grid-column-align: center;
         justify-self: center;
-        float: left;
+        /* float: left; */
         width: 5px;
         height: 65%;
         background-color: $Cyan;
