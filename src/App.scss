@@ -453,9 +453,9 @@ body {
         position: absolute;
         -ms-grid-column-align: center;
         justify-self: center;
-        /* float: left; */
+        left: 40%;
         width: 5px;
-        height: 65%;
+        height: 90%;
         background-color: $Cyan;
       }
 
@@ -843,6 +843,7 @@ body {
         .line {
           display: inline-block;
           transform: rotate(90deg);
+          height: 50%;
         }
       }
     }
