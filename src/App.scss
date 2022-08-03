@@ -451,6 +451,7 @@ body {
 
       .line {
         position: absolute;
+        -ms-grid-column-align: center;
         justify-self: center;
         float: left;
         width: 5px;
@@ -607,7 +608,7 @@ body {
       a{
         @include textDecoration;
         color: $Cyan;
-      }
+        }
       }
   }
 
