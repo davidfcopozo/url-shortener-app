@@ -43,6 +43,7 @@ $smFontSizes: clamp(.8rem, 1rem, 1.5rem);
 *::before,
 *::after {
   box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 }
 
 /* Reset margins */
@@ -85,10 +86,14 @@ select {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+    -webkit-animation-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      -webkit-animation-iteration-count: 1 !important;
+      animation-iteration-count: 1 !important;
+      -webkit-transition-duration: 0.01ms !important;
+      -o-transition-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
   }
 }
 
@@ -99,6 +104,7 @@ html {
 body {
   .container {
     overflow-x: hidden;
+    margin:0 auto;
   }
 
   img {
@@ -106,13 +112,19 @@ body {
   }
 
   header {
-    display: flex;
-    width: 80%;
-    margin: 1rem auto;
-    gap: 1rem;
-    justify-content: space-between;
-    min-height: 5vh;
-    align-items: center;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      width: 80%;
+      margin: 1rem auto;
+      gap: 1rem;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      min-height: 5vh;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
 
     ul a {
       @include textDecoration;
@@ -451,11 +463,9 @@ body {
 
       .line {
         position: absolute;
-        -ms-grid-column-align: center;
-        justify-self: center;
-        left: 40%;
+        left: 50%;
         width: 5px;
-        height: 90%;
+        min-height: 85vh;
         background-color: $Cyan;
       }
 
@@ -597,7 +607,7 @@ body {
     }
   }
   .footprint {
-    width: 100%;
+    max-width: 100%;
     padding: 2rem;
     border-top: 1px solid $GrayishViolet;
     color: $GrayishViolet;
@@ -841,9 +851,9 @@ body {
         }
   
         .line {
-          display: inline-block;
           transform: rotate(90deg);
-          height: 50%;
+          min-height: 40%;
+          left: 50%;
         }
       }
     }

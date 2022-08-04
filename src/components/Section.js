@@ -36,7 +36,7 @@ const Section = () => {
           </p>
         </div>
         <div className="img-section">
-          <div className="line"></div>
+          <hr className="line" />
           <figure className="figure1">
             <div>
               <img src={brandRecognition} alt="" />
