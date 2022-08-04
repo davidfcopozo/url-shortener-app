@@ -9,7 +9,7 @@ const Input = ({ setInputValue }) => {
   const onChangeValidator = (e) => {
     setValue(e.target.value);
     const reg =
-      /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
+      /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
     if (e.target.value.length > 1 && !reg.test(value)) {
       linkInput.style.outlineStyle = "solid";
       linkInput.style.outlineColor = "red";
@@ -51,7 +51,7 @@ const Input = ({ setInputValue }) => {
 
   return (
     <>
-      <form onSubmit={handleClick}>
+      <form onSubmit={handleClick} autocomplete="on">
         <div className="input-container">
           <input
             type="text"
