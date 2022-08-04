@@ -9,7 +9,7 @@ const Input = ({ setInputValue }) => {
   const onChangeValidator = (e) => {
     setValue(e.target.value);
     const reg =
-      /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w{2,6}\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
+      /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]{2,6}$/;
 
     if (e.target.value.length > 1 && !reg.test(value)) {
       linkInput.style.outlineStyle = "solid";
