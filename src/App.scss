@@ -9,7 +9,7 @@ $GrayishViolet: hsl(257, 7%, 63%);
 $VeryDarkBlue: hsl(255, 11%, 22%);
 $VeryDarkViolet: hsl(260, 8%, 14%);
 $logoFontSizes: clamp(1.5rem, 3vw + .5rem, 2rem);
-$h2FontSizes: clamp(2rem, 3vw + 1rem, 3.3rem);
+$h2FontSizes: clamp(3rem, 3vw + 1.5rem, 3.5rem);
 $footerH2FontSizes: clamp(2rem, 2vw + 1rem, 2.5rem);
 $h3FontSizes: clamp(1rem, 3vw + 1rem, 2.3rem);
 $smFontSizes: clamp(.8rem, 1rem, 1.5rem);
@@ -116,7 +116,7 @@ body {
       display: -ms-flexbox;
       display: flex;
       width: 80%;
-      margin: 1rem auto;
+      margin: 2rem auto;
       gap: 1rem;
       -webkit-box-pack: justify;
       -ms-flex-pack: justify;
@@ -233,7 +233,16 @@ body {
       color: $GrayishViolet;
       font-weight: 500;
       a {
-        @include fonts(1rem, 700);
+        @include textDecoration;
+        background-color: $Cyan;
+        padding: 1rem 1.5rem;
+        border-radius: 25px;
+        @include fonts(1rem, 500);
+        color: white;
+    
+        &:hover {
+          @include opacity;
+        }
       }
     }
 
@@ -251,19 +260,7 @@ body {
       @include fonts(1rem, 500);
     }
 
-    a {
-      @include textDecoration;
-      background-color: $Cyan;
-      padding: 0.5rem 1.5rem;
-      border-radius: 25px;
-      @include fonts(1rem, 500);
-      color: white;
-      &:hover {
-        @include opacity;
-      }
-    }
-
-
+  
     .img-section {
       width: 150%;
 
@@ -284,7 +281,7 @@ body {
     text-align: center;
     justify-content: space-around;
     padding: 1rem 0;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: hsl(260, 8%, 14%);
     margin-inline: auto;
     width: 90%;
@@ -346,12 +343,11 @@ body {
     }
 
     .text-section {
-      margin-top: 20%;
       text-align: center;
       margin-top: 15%;
 
       h2 {
-        @include fonts(1.5rem, 700);
+        @include fonts($footerH2FontSizes, 700);
       }
 
       p {
@@ -479,7 +475,7 @@ body {
 
         div {
           display: flex;
-          background-color: $VeryDarkBlue;
+          background-color: $DarkViolet;
           padding: 0.5rem;
           width: 80px;
           min-height: 80px;
@@ -528,7 +524,7 @@ body {
         background-color: $Cyan;
         border-radius: 25px;
         @include fonts(1rem, 700);
-        padding: 0.5rem 1.5rem;
+        padding: 1rem 1.5rem;
         border-color: transparent;
         &:hover {
           opacity: 0.9;
@@ -564,7 +560,7 @@ body {
     }
 
     li {
-      color: $GrayishViolet;
+      color: $Gray;
       margin: .8rem auto;
       @include textDecoration;
       @include fonts($smFontSizes, 500);
@@ -737,10 +733,11 @@ body {
 
 @media (min-width: 750px) {
 
+
   .sections {
     .fist-section {
       display: grid;
-      grid-template-columns: 40% 60%;
+      grid-template-columns: 50% 50%;
       gap: 1rem;
     
         .text-section {
@@ -835,12 +832,32 @@ body {
           }
         }
       }
+
+      .text-section {
+        width: 40%;
+      }
   
       .img-section {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         padding: 1rem 0;
         margin-bottom: 3rem;
+
+        figure {
+            max-width: 300px;
+            max-height: 300px;
+        
+            div {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-top: -2.5rem;
+              margin-left: 2rem;
+            }
+            figcaption {
+              text-align: left;
+            }
+          }
   
         figure:nth-child(3) {
           margin-top: 5rem;
@@ -856,6 +873,7 @@ body {
           left: 50%;
         }
       }
+
     }
   }
 
@@ -944,7 +962,7 @@ body {
       .input-container {
         display: grid;
         grid-template-columns: 80% 20%;
-        padding: 3rem 3rem;
+        padding: 4rem 3rem;
         background-image: url(./assets/bg-shorten-desktop.svg);
 
         #link {
@@ -960,11 +978,13 @@ body {
           max-width: 200px;
         }
       }
+
       .second-section {
 
         .text-section {
           margin-top: 10%;
         }
+
         .boost {
           background-image: url(./assets/bg-boost-desktop.svg);
           padding: 3rem;
