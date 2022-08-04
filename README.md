@@ -35,7 +35,8 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: (https://dev.d1suk1svecsmym.amplifyapp.com/)
+
+- Live Site URL: (https://davidfcopozo.github.io/url-shortener-app/)
 
 ## My process
 
@@ -59,8 +60,8 @@ One technology I'd love to work with in my next project is Next.js and render it
 
 ### Useful resources
 
-- [Stack Overflow](https://stackoverflow.com/) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [CSS-Tricks](https://css-tricks.com/) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [Stack Overflow](https://stackoverflow.com/)
+- [CSS-Tricks](https://css-tricks.com/)
 
 ## Author
 
