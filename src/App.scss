@@ -9,10 +9,10 @@ $GrayishViolet: hsl(257, 7%, 63%);
 $VeryDarkBlue: hsl(255, 11%, 22%);
 $VeryDarkViolet: hsl(260, 8%, 14%);
 $logoFontSizes: clamp(1.5rem, 3vw + .5rem, 2rem);
-$h2FontSizes: clamp(3rem, 3vw + 1.5rem, 3.5rem);
+$h2FontSizes: clamp(3rem, 3vw + 2rem, 4rem);
 $footerH2FontSizes: clamp(2rem, 2vw + 1rem, 2.5rem);
 $h3FontSizes: clamp(1rem, 3vw + 1rem, 2.3rem);
-$smFontSizes: clamp(.8rem, 1rem, 1.5rem);
+$smFontSizes: clamp(.8rem, 1.2rem, 2rem);
 
 
 @mixin fonts($fontSize, $fontWeight) {
@@ -304,7 +304,7 @@ body {
     }
 
     #link {
-      border-radius: 5px;
+      border-radius: 10px;
       border-color: transparent;
     }
 
@@ -602,6 +602,7 @@ body {
       }
     }
   }
+
   .footprint {
     max-width: 100%;
     padding: 2rem;
@@ -713,7 +714,6 @@ body {
           padding: 0.5rem 1.5rem;
           border-color: transparent;
           
-
           &:hover {
             opacity: 0.9;
             filter: brightness(1.1);
@@ -732,7 +732,12 @@ body {
 /* **************************************************************************************************** */
 
 @media (min-width: 750px) {
+  body {
 
+    header {
+      margin: 3rem auto;
+    }
+  }
 
   .sections {
     .fist-section {
@@ -757,8 +762,8 @@ body {
         }
     
         P {
-          margin-bottom: 2rem;
-          @include fonts(1rem, 500);
+          margin-bottom: 3rem;
+          @include fonts($smFontSizes, 500);
         }
     
         a {
@@ -841,7 +846,7 @@ body {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         padding: 1rem 0;
-        margin-bottom: 3rem;
+        margin-bottom: 5rem;
 
         figure {
             max-width: 300px;
@@ -886,7 +891,6 @@ body {
       align-items: center;
       justify-content: space-between;
       width: 80%;
-      margin: 0 auto;
   
       .logo {
         @include textDecoration;
@@ -962,14 +966,14 @@ body {
       .input-container {
         display: grid;
         grid-template-columns: 80% 20%;
-        padding: 4rem 3rem;
+        padding: 3rem 3rem;
         background-image: url(./assets/bg-shorten-desktop.svg);
 
         #link {
           width: 100%;
           height: 60px;
           &::placeholder {
-            font-size: 1rem;
+           @include fonts(1rem, 500);
             padding-left: 0;
           }
         }
@@ -1117,7 +1121,6 @@ body {
       padding-top: 2rem;
       
       ~ .text-section {
-        margin-top: 1%;
         position: relative;
         text-align: center;
   
