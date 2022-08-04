@@ -30,7 +30,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](../assets/Shortlify.png)
+![](./src/assets/Shortlify.png)
 
 ### Links
 
