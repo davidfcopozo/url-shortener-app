@@ -2,7 +2,7 @@ import React from "react";
 
 const Footprint = () => {
   return (
-    <div className="footprint">
+    <div className="footprint" data-testid="footprint">
       <p>
         Built by <br />
         <a
