@@ -34,8 +34,6 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-
 - Live Site URL: (https://davidfcopozo.github.io/url-shortener-app/)
 
 ## My process
@@ -65,6 +63,6 @@ One technology I'd love to work with in my next project is Next.js and render it
 
 ## Author
 
-- Website - [David Francisco](https://davidfrancisco.netlify.com/)
+- Website - [David Francisco](https://davidfrancisco.dev/)
 - Frontend Mentor - [@davidfcopozo](https://www.frontendmentor.io/profile/davidfcopozo)
 - Twitter - [@dadaicodes](https://www.twitter.com/dadaicodes)
